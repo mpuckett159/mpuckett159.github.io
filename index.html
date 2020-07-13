@@ -1,25 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>This is the title of the webpage!</title>
-    <style>
-      table, th, td {
-        border: 1px solid black;
-      }
-    </style>
-  </head>
-  <body>
-    <table style="width:20%">
-      <tr>
-        <th>Name</th>
-        <th>Designation</th>
-        <th>Gender</th>
-      </tr>
-      <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>50</td>
-      </tr>
-    </table>
-  </body>
+<head>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <input type="text" id="one"><input type="text" id="two"><input type="text" id="three"><button onclick="addRow()">ADD</button>
+<table id="inventory">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Number</th>
+      <th>Item Color</th>
+    </tr>
+  </thead>
+  <tbody id="screen">
+  </tbody>
+</table>
+</body>
+  <script>
+    $( document ).ready(function(){
+      $('#screen').html(localStorage.getItem("data"));
+      
+    });
+    function addRow(){
+      var str = '<tr class = "boxType"><td>'+$('#one').val()+'</td>\
+  <td>'+$('#two').val()+'</td>\
+  <td>'+$('#three').val()+'</td>\
+</tr>'
+      $('#screen').append(str);
+      localStorage.setItem("data", $('#screen').html());
+    }
+  </script>
 </html>
